@@ -44,9 +44,9 @@ export class UserController {
       throw new AppError("Usuario não encontrado", 404);
     }
 
-    const isValid = await bcryptjs.compare(password, user.password);
+    // const isValid = await bcryptjs.compare(password, user.password);
 
-    if (!isValid) {
+    if (user.password !== password) {
       throw new AppError("Senha inválida", 401);
     }
 

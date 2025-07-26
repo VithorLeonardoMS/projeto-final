@@ -29,13 +29,7 @@ export class UserRepository implements IUserRepository {
 
   async update(id: number, data: IUser): Promise<IUser> {
     const result = await this.repository.update(id, data);
-
-    console.log("id", id);
-    const updatedCourse = await this.findById(id);
-
-    console.log(updatedCourse);
-
-    return updatedCourse as any;
+    return result as any;
   }
 
   async delete(id: number): Promise<void> {

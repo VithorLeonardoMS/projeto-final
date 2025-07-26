@@ -77,4 +77,22 @@ export class UserService {
       throw new AppError("Password is required", 400);
     }
   }
+
+  private validateUpdateUserData(data: IRequestUser): void {
+    if (!data.name || data.name.trim() === "") {
+      throw new AppError("Name is required", 400);
+    }
+
+    if (!data.email || data.email.trim() === "") {
+      throw new AppError("Email is required", 400);
+    }
+
+    if (!data.password || data.password.trim() === "") {
+      throw new AppError("Password is required", 400);
+    }
+
+    if (!data.password || data.password.trim() === "") {
+      throw new AppError("Password is required", 400);
+    }
+  }
 }
