@@ -1,0 +1,24 @@
+meta {
+  name: Criar Curso
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:3000/cursos
+  body: json
+  auth: inherit
+}
+
+headers {
+  logado: 
+}
+
+body:json {
+  {
+    "title": "Curso 3",
+    "description": "ZALISJDLAKJL:AS ASLDKJAKLSDJA ASLDKJASLKDJAS ALSKDJLKASJD",
+    "imageUrl": "https://placehold.co/600x400",
+    "externalLink": "http://www.google.com"
+  }
+}

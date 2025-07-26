@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="./css/cadastroELoginStyle.css"/>
+</head>
+<body>
+  <div class="container">
+    <!-- Login -->
+    <div class="form-box login">
+      <form id="loginForm">
+        <h1>Login</h1>
+        <div class="input-box">
+          <input id="loginEmail" type="email" placeholder="Email" required/>
+          <i class='bx bxs-user'></i>
+        </div>
+        <div class="input-box">
+          <input id="loginPassword" type="password" placeholder="Senha" required/>
+          <i class='bx bxs-lock-alt'></i>
+        </div>
+        
+        <button type="submit" class="btn">Entrar</button>
+      </form>
+    </div>
+
+    <!-- Cadastro -->
+    <div class="form-box register">
+      <form id="registerForm">
+        <h1>Cadastro</h1>
+        <div class="input-box">
+          <input id="registerName" type="text" placeholder="Nome" required/>
+          <i class='bx bxs-user'></i>
+        </div>
+        <div class="input-box">
+          <input id="registerEmail" type="email" placeholder="Email" required/>
+          <i class='bx bxs-envelope'></i>
+        </div>
+        <div class="input-box">
+          <input id="registerPassword" type="password" placeholder="Senha" required/>
+          <i class='bx bxs-lock-alt'></i>
+        </div>
+        <button type="submit" class="btn">Cadastrar</button>
+      </form>
+    </div>
+
+    <!-- Alternância -->
+    <div class="toggle-box">
+      <div class="toggle-panel toggle-left">
+        <h1>Olá, bem vindo</h1>
+        <p>Não tem uma conta?</p>
+        <button class="btn register-btn">Cadastre-se</button>
+      </div>
+      <div class="toggle-panel toggle-right">
+        <h1>Bem vindo de volta</h1>
+        <p>Já tem uma conta?</p>
+        <button class="btn login-btn">Login</button>
+      </div>
+    </div>
+  </div>
+
+  <script >
+  // Alternância de telas
+  const loginBtn = document.querySelector('.login-btn');
+    const registerBtn = document.querySelector('.register-btn');
+    const container = document.querySelector('.container');
+
+    loginBtn.addEventListener('click', () => {
+      container.classList.remove('active');
+    });
+
+    registerBtn.addEventListener('click', () => {
+      container.classList.add('active');
+    });
+
+    // Cadastro
+    const registerForm = document.querySelector(".form-box.register form");
+    registerForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById("registerName").value;
+      const email = document.getElementById("registerEmail").value;
+      const password = document.getElementById("registerPassword").value;
+
+      const res = await fetch("http://localhost:3000/users", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, password })
+      });
+
+      const data = await res.json();
+      alert(data.message || "Cadastro realizado");
+      container.classList.remove('active');
+    });
+
+    // Login
+    const loginForm = document.querySelector(".form-box.login form");
+    loginForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById("loginEmail").value;
+      const password = document.getElementById("loginPassword").value;
+
+      const res = await fetch("http://localhost:3000/usersLogin", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.user && data.user.id) {
+        localStorage.setItem("userId", data.user.id);
+        window.location.href = "index.html";
+      } else {
+        alert(data.message || "Erro ao fazer login");
+      }
+    });
+  </script>
+  
+</body>
+</html>

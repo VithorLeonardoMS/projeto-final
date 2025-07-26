@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0; /* Light background for contrast */
+    height: 100vh; /* Full viewport height */
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    background-color: white; /* White background for the form */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    border-radius: 10px;
+    overflow: hidden; /* Round the corners */
+    width: 600px; /* Set a fixed width for the container */
+}
+
+.image-section {
+    background-color: #FFA500; /* Orange background similar to image */
+    width: 50%; /* Take up half the container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-section img {
+    width: 80%; /* Scale the image size */
+    border-radius: 10px;
+}
+
+.form-section {
+    padding: 20px; /* Add spacing around the form */
+    width: 50%; /* Take up half the container */
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px; /* Space below the heading */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%; /* Make inputs full width */
+    padding: 10px; /* Add padding inside inputs */
+    margin: 10px 0; /* Space between inputs */
+    border: 1px solid #ccc;
+    border-radius: 5px; /* Round input edges */
+}
+
+button {
+    width: 100%;
+    padding: 10px; /* Space inside button */
+    background-color: #007BFF; /* Bootstrap blue */
+    color: white; /* White text for contrast */
+    border: none;
+    border-radius: 5px; /* Round button edges */
+    cursor: pointer; /* Change cursor on hover */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darken on hover */
+}
+
+/* Link styling */
+a {
+    color: #007BFF; /* Link color */
+    text-decoration: none; /* Remove underline */
+}
+
+a:hover {
+    text-decoration: underline; /* Add underline on hover */
+}

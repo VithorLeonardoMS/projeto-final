@@ -1,0 +1,24 @@
+meta {
+  name: Editar Curso
+  type: http
+  seq: 3
+}
+
+put {
+  url: http://localhost:3000/cursos/2
+  body: json
+  auth: inherit
+}
+
+headers {
+  logado: 
+}
+
+body:json {
+  {
+    "title": "Curso 2",
+    "description": "ZAAZAZAZAZAZAZAZAZZAZA ZAAKSHDKAJ ALSKJDLKASJD ALSKDJLAKSDJ ALSDKJAKLSD ASLDKJLAKSDJ ALSKDJLKASD",
+    "imageUrl": "https://placehold.co/600x400",
+    "externalLink": "http://www.google.com"
+  }
+}

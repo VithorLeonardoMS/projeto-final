@@ -1,0 +1,71 @@
+html,body{
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0; /* Light background for contrast */
+    height: 100vh; /* Full viewport height */
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-image: url("../img/estudante.jpg");
+}
+
+
+.container {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    background-color: white; /* White background for the form */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    border-radius: 10px;
+    overflow: hidden; /* Round the corners */
+    width: 600px; /* Set a fixed width for the container */
+    justify-content: center;
+}
+
+
+.form-section {
+    padding: 20px; /* Add spacing around the form */
+    width: 50%; /* Take up half the container */
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px; /* Space below the heading */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 80%; /* Make inputs full width */
+    padding: 10px; /* Add padding inside inputs */
+    margin: 10px 0; /* Space between inputs */
+    border: 1px solid #ccc;
+    border-radius: 10px; /* Round input edges */
+}
+
+button {
+    width: 40%;
+    padding: 10px; /* Space inside button */
+    background-color: #007BFF; /* Bootstrap blue */
+    color: white; /* White text for contrast */
+    border: none;
+    border-radius: 20px; /* Round button edges */
+    cursor: pointer; /* Change cursor on hover */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darken on hover */
+}
+
+/* Link styling */
+a {
+    color: #007BFF; /* Link color */
+    text-decoration: none; /* Remove underline */
+}
+
+a:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
