@@ -30,6 +30,18 @@ body {
   margin-left: 12px;
 }
 
+.perfil-bolinha img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.perfil-bolinha i {
+  color: #333;
+  font-size: 20px;
+}
+
 .bg-dark {
   background-color: #5992ff !important;
 }
@@ -599,7 +611,6 @@ h4 {
   color: red;
 }
 
-
 .profile-container {
   width: 100%;
   max-width: 500px;
@@ -611,7 +622,7 @@ h4 {
   backdrop-filter: blur(10px);
   border-radius: 20px;
   margin-top: 20%;
-    margin-bottom: 10%;
+  margin-bottom: 10%;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -720,13 +731,13 @@ h4 {
 
 @keyframes pulse {
   0% {
-      box-shadow: 0 0 0 0 rgba(72, 187, 120, 0.7);
+    box-shadow: 0 0 0 0 rgba(72, 187, 120, 0.7);
   }
   70% {
-      box-shadow: 0 0 0 10px rgba(72, 187, 120, 0);
+    box-shadow: 0 0 0 10px rgba(72, 187, 120, 0);
   }
   100% {
-      box-shadow: 0 0 0 0 rgba(72, 187, 120, 0);
+    box-shadow: 0 0 0 0 rgba(72, 187, 120, 0);
   }
 }
 
@@ -835,7 +846,7 @@ h4 {
   justify-content: center;
 }
 
-.btnPerfil{
+.btnPerfil {
   padding: 12px 24px;
   border: none;
   border-radius: 10px;
@@ -969,15 +980,14 @@ h4 {
   }
 }
 
-
 @keyframes slideIn {
   from {
-      transform: translateX(100%);
-      opacity: 0;
+    transform: translateX(100%);
+    opacity: 0;
   }
   to {
-      transform: translateX(0);
-      opacity: 1;
+    transform: translateX(0);
+    opacity: 1;
   }
 }
 
@@ -988,50 +998,50 @@ h4 {
 /* Responsive Design */
 @media (max-width: 768px) {
   body {
-      padding: 10px;
+    padding: 10px;
   }
-  
+
   .profile-card {
-      padding: 20px;
+    padding: 20px;
   }
-  
+
   .profile-name {
-      font-size: 24px;
+    font-size: 24px;
   }
-  
+
   .profile-actions {
-      flex-direction: column;
+    flex-direction: column;
   }
-  
+
   .btnPerfil {
-      width: 100%;
-      justify-content: center;
+    width: 100%;
+    justify-content: center;
   }
-  
+
   .upload-progress,
   .notification {
-      left: 10px;
-      right: 10px;
-      top: 10px;
+    left: 10px;
+    right: 10px;
+    top: 10px;
   }
 }
 
 @media (max-width: 480px) {
   .profile-image {
-      width: 100px;
-      height: 100px;
+    width: 100px;
+    height: 100px;
   }
-  
+
   .contact-info {
-      gap: 8px;
+    gap: 8px;
   }
-  
+
   .contact-item {
-      font-size: 14px;
+    font-size: 14px;
   }
-  
+
   .skills-container {
-      justify-content: center;
+    justify-content: center;
   }
 }
 
@@ -1549,7 +1559,6 @@ h2 {
     text-align: left;
   }
 }
-
 
 @media (min-width: 1200px) {
   .course-hero img.course-hero-image {

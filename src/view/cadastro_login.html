@@ -8,7 +8,7 @@
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./css/cadastroELoginStyle.css" />
+    <link rel="stylesheet" href="./css/cadastro_login.css" />
   </head>
   <body>
     <div class="container">
@@ -133,6 +133,7 @@
 
         if (res.ok && data && data.id) {
           localStorage.setItem("userId", data.id);
+          localStorage.setItem("profileUrl", data.profileUrl);
           window.location.href = "index.html";
         } else {
           alert(data.message || "Erro ao fazer login");

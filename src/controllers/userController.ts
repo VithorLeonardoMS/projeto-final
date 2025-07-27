@@ -67,6 +67,7 @@ export class UserController {
       return res.status(200).json({
         message: "Login bem-sucedido",
         id: user.id, // ESSENCIAL para salvar no localStorage
+        profileUrl: user.profileUrl,
       });
     } catch (error: any) {
       return res
