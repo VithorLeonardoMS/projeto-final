@@ -1,7 +1,8 @@
 import { Router } from "express";
 import { CourseController } from "./controllers/CourseController";
 import { ClassesController } from "./controllers/ClassesController"; // Importa o novo controlador
-import { UserController } from "./controllers/UserController";
+import { UserController } from "./controllers/userController";
+import { upload } from "./services/UserService"; // Import the upload middleware
 
 const routes = Router();
 const courseController = new CourseController();
@@ -9,9 +10,9 @@ const classesController = new ClassesController(); // Cria uma instância do con
 const userController = new UserController();
 
 routes.get("/users", userController.findAll);
-routes.post("/users", userController.create);
+routes.post("/users", upload.single("profileImage"), userController.create); // Add upload middleware
 routes.get("/users/:id", userController.findById);
-routes.put("/users/:id", userController.update);
+routes.put("/users/:id", upload.single("profileImage"), userController.update); // Add upload middleware
 routes.delete("/users/:id", userController.delete);
 routes.post("/usersLogin", userController.login);
 

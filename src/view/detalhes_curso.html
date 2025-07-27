@@ -119,6 +119,7 @@
 
     function sair() {
       if (confirm('Tem certeza que deseja sair da sua conta?')) {
+        localStorage.removeItem("userId");
         configModal.style.display = 'none';
       }
     }

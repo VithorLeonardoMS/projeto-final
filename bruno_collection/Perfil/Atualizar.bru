@@ -4,17 +4,17 @@ meta {
   seq: 5
 }
 
-post {
-  url: http://localhost:3000/users
-  body: json
+put {
+  url: http://localhost:3000/users/{{id}}
+  body: multipartForm
   auth: inherit
 }
 
 body:json {
   {
-    "name": "vagner",
-    "email": "vagner@gmail.com",
-    "password": "12345"
+    "name": "test",
+    "email": "test@test",
+    "password": "test2"
   }
 }
 

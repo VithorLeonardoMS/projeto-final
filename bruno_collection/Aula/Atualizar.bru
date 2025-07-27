@@ -5,9 +5,18 @@ meta {
 }
 
 put {
-  url: http://localhost:3000/aulas/5
-  body: none
+  url: 
+  body: json
   auth: inherit
+}
+
+body:json {
+  {
+    "title": "Outra Aula da Danny",
+    "description": "EDITADO",
+    "url": "https://www.youtube.com",
+    "courseId": "1"
+  }
 }
 
 settings {

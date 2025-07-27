@@ -19,9 +19,17 @@ export interface IRequestUser {
   name: string;
   email: string;
   password: string;
+  /**
+   * URL para a imagem do perfil do usuário. Pode ser:
+   * - Uma string de URL direta fornecida pelo cliente
+   * - Um caminho de URL gerado após o upload do arquivo (/uploads/nome_do_arquivo)
+   * - Indefinido se nenhuma imagem de perfil estiver configurada
+   */
   profileUrl?: string;
-  // createdCoursesIds: number[];
-  // reactionsIds: number[];
+}
+export interface IUserRequestWithFile {
+  userData: IRequestUser;
+  profileImage?: Express.Multer.File;
 }
 
 export interface IUserRepository {

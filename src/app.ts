@@ -23,6 +23,10 @@ class App {
     this.app.use(cors());
     // Serve static files from the 'src/view' directory
     this.app.use(express.static(path.join(__dirname, "view")));
+    this.app.use(
+      "/uploads",
+      express.static(path.join(__dirname, "..", "uploads"))
+    );
   }
 
   private routes(): void {

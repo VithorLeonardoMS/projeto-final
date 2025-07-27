@@ -29,7 +29,17 @@ export class UserRepository implements IUserRepository {
 
   async update(id: number, data: IUser): Promise<IUser> {
     const result = await this.repository.update(id, data);
-    return result as any;
+    if (result.affected === 0) {
+      throw new AppError("Course not found", 404);
+    }
+
+    const updatedCourse = await this.findById(id);
+
+    if (!updatedCourse) {
+      throw new AppError("Error retrieving updated course", 500);
+    }
+
+    return updatedCourse;
   }
 
   async delete(id: number): Promise<void> {

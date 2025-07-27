@@ -36,16 +36,4 @@ export class User {
     this.email = email;
     this.password = password;
   }
-
-  // @BeforeInsert()
-  // async hashPasswordBeforeInsert() {
-  //   const salt = await bcrypt.genSalt(10);
-  //   this.password = await bcrypt.hash(this.password, salt);
-  // }
-
-  // @BeforeUpdate()
-  // async hashPasswordBeforeUpdate() {
-  //   const salt = await bcrypt.genSalt(10);
-  //   this.password = await bcrypt.hash(this.password, salt);
-  // }
 }
