@@ -91,6 +91,9 @@ body {
   transform: scale(1.1);
 }
 
+
+
+
 .titulo {
   text-align: center;
   margin-top: 40px;
@@ -360,7 +363,7 @@ hr {
   display: none;
 }
 
-#overlay {
+#overlay-menu {
   position: fixed;
   top: 0;
   left: 0;
@@ -373,12 +376,12 @@ hr {
   transition: opacity 0.3s ease;
 }
 
-#overlay.show {
+#overlay-menu.show {
   opacity: 1;
   pointer-events: auto;
 }
 
-#overlay-content {
+#overlay-content-menu {
   position: fixed;
   top: 80px;
   right: 10px;
@@ -391,7 +394,7 @@ hr {
   z-index: 1110;
 }
 
-.overlay-button {
+.overlay-button-menu {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -405,11 +408,11 @@ hr {
   transition: background-color 0.2s;
 }
 
-#red.overlay-button {
+#red-menu.overlay-button {
   color: red;
 }
 
-.overlay-button:hover {
+.overlay-button-menu:hover {
   background-color: #c0c0c0;
 }
 
@@ -1563,5 +1566,58 @@ h2 {
 @media (min-width: 1200px) {
   .course-hero img.course-hero-image {
     max-height: 450px;
+  }
+}
+#overlay-busca {
+  display: flex;
+  justify-content: center;  /* mantém centralizado no geral */
+  align-items: center;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #5992ff;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+#overlay-busca.show {
+  display: flex;
+}
+
+#overlay-content-busca {
+  background: #5992ff;
+  max-width: 450px;
+  width: 90%;
+  margin-top: 6%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 12px;
+  padding: 1.5rem;
+  overflow-y: auto;
+  max-height: 80vh;
+  position: relative;
+  left: -10%; /* desloca 5% para a esquerda */
+}
+
+/* Estilo dos cards */
+#search-results .card {
+  background-color: white;
+  color: black;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+/* Garante que todo o texto dentro dos cards seja preto */
+#search-results .card * {
+  color: black !important;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  #overlay-content-busca {
+    transform: none;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
   }
 }

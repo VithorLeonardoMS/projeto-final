@@ -19,9 +19,21 @@ routes.post("/usersLogin", userController.login);
 // Rotas para cursos
 routes.post("/cursos", (req, res) => courseController.create(req, res));
 routes.get("/cursos/:id", (req, res) => courseController.findById(req, res));
-routes.get("/cursos", (req, res) => courseController.findAll(req, res));
 routes.put("/cursos/:id", (req, res) => courseController.update(req, res));
 routes.delete("/cursos/:id", (req, res) => courseController.delete(req, res));
+
+// Busca e listagem geral em uma mesma rota
+routes.get("/cursos", async (req, res) => {
+  const { search } = req.query;
+  if (search) {
+    return courseController.findByTitle(req, res);
+  } else {
+    return courseController.findAll(req, res);
+  }
+});
+
+  
+
 
 // Rotas para aulas
 routes.post("/aulas", (req, res) => classesController.create(req, res)); // Criar aula

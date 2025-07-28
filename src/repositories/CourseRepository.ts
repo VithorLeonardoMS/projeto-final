@@ -1,4 +1,4 @@
-import { Repository, In } from "typeorm";
+import { Repository, In, Like } from "typeorm";
 import { ICourse, ICourseRepository } from "../interfaces/ICourse";
 import { Course } from "../models/Course";
 import { AppDataSource } from "../database/connection";
@@ -32,6 +32,14 @@ export class CourseRepository implements ICourseRepository {
       relations: ["classes"],
     })
   }
+
+  async findByTitle(search: string): Promise<ICourse[]> {
+    return await this.repository.find({
+      where: { title: Like(`%${search}%`) },
+      relations: ["classes"],
+    });
+  }
+  
 
   /**
    * 
