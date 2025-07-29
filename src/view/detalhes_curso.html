@@ -27,13 +27,19 @@
             </div>
           
             <!-- Formulário de busca -->
-            <form id="form-search" class="d-none d-md-block me-3" role="search">
-              <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
+            <form id="form-search" role="search">
+              <input type="search" id="search-input" placeholder="Buscar cursos..." />
             </form>
+            
+           <div id="overlay" class="overlay-busca">
+              <div id="overlay-content-busca" class="overlay-content">
+               
+              </div>
+            </div>
           
             <!-- Botões à direita -->
             <div class="topbar-right d-flex align-items-center gap-3">
-              <a class="btn-cursos" href="Main.html#Cursos">Cursos</a>
+              <a class="btn-cursos" href="index.html#cursos">Cursos</a>
               <a href="SobreNos.html" class="user">Sobre Nós</a>
               <div class="perfil-bolinha">
                 <i class="fas fa-user"></i>
@@ -44,7 +50,7 @@
         
      
       </header>
-
+      <div id="search-results"></div>
   <!-- ▸▸ CONTEÚDO PRINCIPAL ◂◂ -->
   <main class="course-wrapper px-0">
     <!-- vídeo / imagem hero -->
@@ -70,15 +76,15 @@
     </div>
   </footer>
 
-  <div id="overlay">
-    <div id="overlay-content">
-      <div class="overlay-button"><a href="Perfil.html" class="text-decoration-none text-white"><i class="fas fa-user"></i> Seu perfil</a></div>
-      <div class="overlay-button"><a href="editar.html" class="text-decoration-none text-white"><i class="fas fa-edit"></i> Editar Cursos/Aulas</a></div>
-      <div class="overlay-button"><a href="criar_cursos.html" class="text-decoration-none text-white"><i class="fa fa-plus"></i>Criar Cursos</a></div>
-      <div class="overlay-button"><a href="criar_aula.html" class="text-decoration-none text-white"><i class="fa fa-plus"></i> Criar Aulas</a></div>
-      <div class="overlay-button"><a href="https://wa.me/5551999495754" class="text-decoration-none text-white"><i class="fas fa-headphones"></i> Suporte </a></div>
-      <div class="overlay-button text-white" onclick="excluirConta()"><i class="fas fa-cog"></i> Excluir Conta</div>
-      <div id="red" class="overlay-button text-red" onclick="sair()"><i class="fa fa-sign-out" ></i> Sair</div>
+  <div id="overlay-menu">
+    <div id="overlay-content-menu">
+      <div class="overlay-button-menu"><a href="Perfil.html" class="text-decoration-none text-white"><i class="fas fa-user"></i> Seu perfil</a></div>
+      <div class="overlay-button-menu"><a href="editar.html" class="text-decoration-none text-white"><i class="fas fa-edit"></i> Editar Cursos/Aulas</a></div>
+      <div class="overlay-button-menu"><a href="criar_cursos.html" class="text-decoration-none text-white"><i class="fa fa-plus"></i>Criar Cursos</a></div>
+      <div class="overlay-button-menu"><a href="criar_aula.html" class="text-decoration-none text-white"><i class="fa fa-plus"></i> Criar Aulas</a></div>
+      <div class="overlay-button-menu"><a href="https://wa.me/5551999495754" class="text-decoration-none text-white"><i class="fas fa-headphones"></i> Suporte </a></div>
+      <div class="overlay-button-menu text-white" onclick="excluirConta()"><i class="fas fa-cog"></i> Excluir Conta</div>
+      <div id="red-menu" class="overlay-button text-red" onclick="sair()"><i class="fa fa-sign-out" ></i> Sair</div>
     </div>
   </div>
 
@@ -90,39 +96,6 @@
   </div>
 
   <script>
-    const overlay = document.getElementById('overlay');
-    const configModal = document.getElementById('config-modal');
-
-    document.querySelector('.perfil-bolinha').addEventListener('click', () => {
-      overlay.classList.add('show');
-    });
-
-    document.addEventListener('click', (e) => {
-      const content = document.getElementById('overlay-content');
-      if (!content.contains(e.target) && !e.target.closest('.perfil-bolinha')) {
-        overlay.classList.remove('show');
-      }
-    });
-
-    document.querySelectorAll('#overlay a').forEach(link => {
-      link.addEventListener('click', () => {
-        overlay.classList.remove('show');
-      });
-    });
-
-    function excluirConta() {
-      if (confirm('Tem certeza que deseja excluir sua conta?')) {
-        alert('Conta excluída!');
-        configModal.style.display = 'none';
-      }
-    }
-
-    function sair() {
-      if (confirm('Tem certeza que deseja sair da sua conta?')) {
-        localStorage.removeItem("userId");
-        configModal.style.display = 'none';
-      }
-    }
 
     // Fetch and dynamically load course details
       async function loadCourseDetails() {
@@ -154,15 +127,6 @@
                 <h1 class="course-title">${course.title}</h1>
                 <p class="course-desc">${course.description}</p>
                 <div class="interaction-bar mt-2 d-flex gap-4 flex-wrap">
-                    <div class="d-flex align-items-center gap-1 like-counter">
-                        <i class="fa-regular fa-thumbs-up"></i><span class="like-count">${course.likes} mil</span>
-                    </div>
-                    <div class="d-flex align-items-center gap-1 dislike-counter">
-                        <i class="fa-regular fa-thumbs-down"></i><span class="dislike-count">${course.dislikes} mil</span>
-                    </div>
-                    <div class="d-flex align-items-center gap-1 favorite-counter">
-                        <i class="fa-regular fa-bookmark favorite-icon"></i><span class="save-count">${course.favorites} mil</span>
-                    </div>
                 </div>
             `;
 

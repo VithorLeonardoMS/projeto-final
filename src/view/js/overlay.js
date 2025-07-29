@@ -1,5 +1,5 @@
 const overlayMenu = document.getElementById("overlay-menu");
-const overlayBusca = document.getElementById("overlay-busca");
+const overlayBusca = document.getElementById("overlay"); // corrigido aqui!
 const configModal = document.getElementById("config-modal");
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -36,20 +36,37 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// Abrir overlay ao clicar na bolinha
+// Abrir overlay do menu
 document.querySelector(".perfil-bolinha").addEventListener("click", () => {
   overlayMenu.classList.add("show");
 });
 
-// Fechar overlay ao clicar fora do conteúdo do menu
+// Fechar overlays ao clicar fora
 document.addEventListener("click", (e) => {
-  const content = document.getElementById("overlay-content-menu");
-  if (overlayMenu && !content.contains(e.target) && !e.target.closest(".perfil-bolinha")) {
+  // Fechar o menu
+  const contentMenu = document.getElementById("overlay-content-menu");
+  if (
+    overlayMenu &&
+    contentMenu &&
+    !contentMenu.contains(e.target) &&
+    !e.target.closest(".perfil-bolinha")
+  ) {
     overlayMenu.classList.remove("show");
+  }
+
+  // Fechar a busca
+  const contentBusca = document.getElementById("overlay-content-busca");
+  if (
+    overlayBusca &&
+    contentBusca &&
+    !contentBusca.contains(e.target) &&
+    !e.target.closest("#form-search")
+  ) {
+    overlayBusca.classList.remove("show");
   }
 });
 
-// Fechar overlay ao clicar em link do menu
+// Fechar overlay do menu ao clicar em links
 document.querySelectorAll("#overlay-menu a").forEach((link) => {
   link.addEventListener("click", () => {
     overlayMenu.classList.remove("show");
@@ -98,39 +115,28 @@ document.getElementById("form-search").addEventListener("submit", async (e) => {
       resultsContainer.innerHTML = "<p>Nenhum curso encontrado.</p>";
     } else {
       resultsContainer.innerHTML = cursos
-        .map((curso) => `
-          <div class="card mb-3" style="max-width: 540px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-            <div class="row g-0 align-items-center">
-              <div class="col-auto">
-                <img src="${curso.imageUrl}" alt="Imagem do curso" style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px 0 0 8px;">
-              </div>
-              <div class="col">
-                <div class="card-body">
-                  <h5 class="card-title mb-1">${curso.title}</h5>
-                  <p class="card-text small text-muted">${curso.description}</p>
-                  <a href="CriarCurso.html?id=${curso.id}" class="btn btn-outline-primary btn-sm mb-2">Ver Curso</a>
-                  <div class="d-flex align-items-center gap-3">
-                    <div class="like-counter d-flex align-items-center gap-1">
-                      <i class="fas fa-thumbs-up like-btn"></i>
-                      <span class="like-count">0</span>
-                    </div>
-                    <div class="dislike-counter d-flex align-items-center gap-1">
-                      <i class="fas fa-thumbs-down dislike-btn"></i>
-                      <span class="dislike-count">0</span>
-                    </div>
-                  </div>
+      .map((curso) => `
+        <div class="card mb-3 position-relative" style="max-width: 540px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+          <button class="btn-close position-absolute end-0 top-0 m-2" onclick="fecharResultado(this)"></button>
+          <div class="row g-0 align-items-center">
+            <div class="col-auto">
+              <img src="${curso.imageUrl}" alt="Imagem do curso" style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px 0 0 8px;">
+            </div>
+            <div class="col">
+              <div class="card-body">
+                <h5 class="card-title mb-1">${curso.title}</h5>
+                <p class="card-text small text-muted">${curso.description}</p>
+                <a href="CriarCurso.html?id=${curso.id}" class="btn btn-outline-primary btn-sm mb-2">Ver Curso</a>
                 </div>
-              </div>
-              <div class="col-auto pe-3">
-                <a href="editar.html?id=${curso.id}" class="text-black">
-                  <i class="fas fa-pen fa-sm"></i>
-                </a>
               </div>
             </div>
           </div>
-        `)
-        .join("");
+        </div>
+      `)
+      .join("");
+    
     }
+
     if (overlayBusca) overlayBusca.classList.add("show");
 
   } catch (err) {
@@ -138,4 +144,12 @@ document.getElementById("form-search").addEventListener("submit", async (e) => {
     resultsContainer.innerHTML = "<p>Erro ao buscar cursos.</p>";
     if (overlayBusca) overlayBusca.classList.add("show");
   }
+
 });
+function fecharResultado(btn) {
+  const card = btn.closest('.card');
+  if (card) {
+    card.remove();
+  }
+}
+

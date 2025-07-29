@@ -25,22 +25,24 @@
               ><img src="./img/logoCo.png" alt="Logo Coruja" class="logo"
             /></a>
           </div>
-          <form id="form-search" class="d-none d-md-block me-3" role="search">
-            <input
-              type="search"
-              class="form-control form-control-dark text-bg-dark"
-              placeholder="Search..."
-            />
+          <form id="form-search" role="search">
+            <input type="search" id="search-input" placeholder="Buscar cursos..." />
           </form>
+          
+         <div id="overlay" class="overlay-busca">
+            <div id="overlay-content-busca" class="overlay-content">
+             
+            </div>
+          </div>
           <div class="topbar-right d-flex align-items-center gap-3">
-            <a class="btn-cursos" href="Main.html#Cursos">Cursos</a>
+            <a class="btn-cursos" href="index.html#cursos">Cursos</a>
             <a href="SobreNos.html" class="user">Sobre Nós</a>
             <div class="perfil-bolinha"><i class="fas fa-user"></i></div>
           </div>
         </div>
       </nav>
     </header>
-
+    <div id="search-results"></div>
     <div class="container mt-5 profile-container">
       <div class="card profile-card p-4">
         <!-- Profile Form -->
@@ -154,15 +156,15 @@
     </footer>
 
     <!-- Overlay lateral -->
-    <div id="overlay">
-      <div id="overlay-content">
-        <div class="overlay-button"><a href="Perfil.html" class="text-decoration-none text-white"><i class="fas fa-user"></i> Seu perfil</a></div>
-        <div class="overlay-button"><a href="editar.html" class="text-decoration-none text-white"><i class="fas fa-edit"></i> Editar Cursos/Aulas</a></div>
-        <div class="overlay-button"><a href="criar_cursos.html" class="text-decoration-none text-white"><i class="fa fa-plus"></i>Criar Cursos</a></div>
-        <div class="overlay-button"><a href="criar_aula.html" class="text-decoration-none text-white"><i class="fa fa-plus"></i> Criar Aulas</a></div>
-        <div class="overlay-button"><a href="https://wa.me/5551999495754" class="text-decoration-none text-white"><i class="fas fa-headphones"></i> Suporte </a></div>
-        <div class="overlay-button text-white" onclick="excluirConta()"><i class="fas fa-cog"></i> Excluir Conta</div>
-        <div id="red" class="overlay-button text-red" onclick="sair()"><i class="fa fa-sign-out" ></i> Sair</div>
+    <div id="overlay-menu">
+      <div id="overlay-content-menu">
+        <div class="overlay-button-menu"><a href="Perfil.html" class="text-decoration-none text-white"><i class="fas fa-user"></i> Seu perfil</a></div>
+        <div class="overlay-button-menu"><a href="editar.html" class="text-decoration-none text-white"><i class="fas fa-edit"></i> Editar Cursos/Aulas</a></div>
+        <div class="overlay-button-menu"><a href="criar_cursos.html" class="text-decoration-none text-white"><i class="fa fa-plus"></i>Criar Cursos</a></div>
+        <div class="overlay-button-menu"><a href="criar_aula.html" class="text-decoration-none text-white"><i class="fa fa-plus"></i> Criar Aulas</a></div>
+        <div class="overlay-button-menu"><a href="https://wa.me/5551999495754" class="text-decoration-none text-white"><i class="fas fa-headphones"></i> Suporte </a></div>
+        <div class="overlay-button-menu text-white" onclick="excluirConta()"><i class="fas fa-cog"></i> Excluir Conta</div>
+        <div id="red-menu" class="overlay-button text-red" onclick="sair()"><i class="fa fa-sign-out" ></i> Sair</div>
       </div>
     </div>
 
