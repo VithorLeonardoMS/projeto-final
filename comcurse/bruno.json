@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "comcurse",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

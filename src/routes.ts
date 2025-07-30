@@ -3,11 +3,13 @@ import { CourseController } from "./controllers/CourseController";
 import { ClassesController } from "./controllers/ClassesController"; // Importa o novo controlador
 import { UserController } from "./controllers/userController";
 import { upload } from "./services/UserService"; // Import the upload middleware
+import { ReactionController } from "./controllers/ReactionController";
 
 const routes = Router();
 const courseController = new CourseController();
 const classesController = new ClassesController(); // Cria uma instância do controlador de aulas
 const userController = new UserController();
+const reactionController = new ReactionController();
 
 routes.get("/users", userController.findAll);
 routes.post("/users", upload.single("profileImage"), userController.create); // Add upload middleware
@@ -43,3 +45,9 @@ routes.put("/aulas/:id", (req, res) => classesController.update(req, res)); // A
 routes.delete("/aulas/:id", (req, res) => classesController.delete(req, res)); // Deletar aula
 
 export { routes };
+
+
+//Rotas para Reaction
+routes.post("/reaction", (req, res) => reactionController.create(req,res))
+routes.get("/reaction", (req, res) => reactionController.findById(req,res))
+
